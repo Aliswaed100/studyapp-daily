@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "id": "DA117DEC-0DA1-4DA1-8DA1-DA11DA11DA11",
+  "name": "Daily Questions",
+  "summary": "A fresh question added every day by your Claude routine.",
+  "iconName": "calendar",
+  "accentColorHex": "#C79F5C",
+  "isRTL": false,
+  "languageCode": "en",
+  "createdAt": "2026-05-29T14:18:44Z",
+  "questions": [
+    {
+      "id": "5B4B524B-C0D6-403C-934C-2923880C5081",
+      "questionText": "What does the Swift `guard` statement do, and why prefer it over a nested `if`?",
+      "answerText": "It exits the current scope early when a condition fails, keeping the happy path un-indented. Bindings made in a `guard let` stay in scope after it.",
+      "hint": "Think 'early return'.",
+      "type": "flashcard",
+      "options": [],
+      "difficulty": "easy",
+      "tags": [
+        "swift",
+        "control-flow"
+      ],
+      "createdAt": "2026-05-29T14:18:44Z",
+      "sortIndex": 0,
+      "imageData": null,
+      "isStarred": null
+    },
+    {
+      "id": "FEBB8E0D-0D5D-42EA-92E9-60E6B5EBD775",
+      "questionText": "Which Swift keyword marks a type whose instances are copied on assignment?",
+      "answerText": "struct",
+      "hint": "Value type vs reference type.",
+      "type": "multipleChoice",
+      "options": [
+        "class",
+        "struct",
+        "actor",
+        "protocol"
+      ],
+      "difficulty": "easy",
+      "tags": [
+        "swift",
+        "types"
+      ],
+      "createdAt": "2026-05-29T14:18:44Z",
+      "sortIndex": 1,
+      "imageData": null,
+      "isStarred": null
+    }
+  ]
+}
