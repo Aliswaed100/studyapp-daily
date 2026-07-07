@@ -1,16 +1,17 @@
 name: S&P 500 daily wallet
 
+# The DAILY 3am run is handled by a Claude "Routine" (scheduled trigger), not
+# by this workflow — so this one is manual-only, a handy "update it now" button.
+# If you'd rather let GitHub run it on a schedule instead, delete the Routine
+# and uncomment the `schedule` block below (00:00 UTC ≈ 03:00 Israel in summer).
 on:
-  schedule:
-    # 00:00 UTC ≈ 03:00 in Israel during summer (IDT, UTC+3);
-    # 02:00 in winter (IST, UTC+2). Change the "0 0" below to shift the time.
-    - cron: "0 0 * * *"
   workflow_dispatch: {}
+  # schedule:
+  #   - cron: "0 0 * * *"
 
 permissions:
   contents: write
 
-# If a scheduled run and a manual run overlap, don't push over each other.
 concurrency:
   group: sp500-wallet
   cancel-in-progress: false
@@ -24,4 +25,5 @@ jobs:
       - name: Update the S&P 500 wallet
         run: python3 sp500_wallet.py
         env:
-          WALLET_DCA_ILS: "250"
+          WALLET_BUY_ILS: "250"
+          WALLET_DROP_PCT: "0"

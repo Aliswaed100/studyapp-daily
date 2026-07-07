@@ -1,12 +1,18 @@
 {
   "currency": "ILS",
   "startingCapital": 5000.0,
-  "strategy": "dca",
-  "dcaPerTradingDay": 250.0,
   "createdAt": "2026-07-07T00:00:00Z",
+  "rule": {
+    "type": "buy-the-dip",
+    "buyAmountILS": 250.0,
+    "dropThresholdPct": 0.0
+  },
   "cash": 5000.0,
-  "invested": 0.0,
+  "sp500Value": 0.0,
   "units": 0.0,
+  "invested": 0.0,
+  "totalValue": 5000.0,
+  "profitLoss": 0.0,
   "lastTradeDate": null,
   "lastIndex": null,
   "lastRunDate": null,

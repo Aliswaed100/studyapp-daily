@@ -2,14 +2,21 @@
 
 _Waiting for the first data run._
 
-Starting capital: **₪5,000.00** (all cash, nothing invested yet).
+## My two balances
 
-This file is rewritten automatically every day at ~03:00 Israel time with the
-latest S&P 500 close, your simulated wallet value, and a plain-language note on
-how the position is being managed.
+| Balance | Amount |
+|---|---|
+| 💵 **Cash** | **₪5,000.00** |
+| 📊 **S&P 500 Value** | **₪0.00** |
+| 💰 Total wallet | ₪5,000.00 |
 
-To fill it in right now: on GitHub open **Actions → “S&P 500 daily wallet” →
-Run workflow**, or run `python3 sp500_wallet.py` locally.
+The rule — **buy the dip:** whenever the S&P 500 closes lower than the day
+before, move **₪250** from *Cash* into *S&P 500 Value*. On flat/up days it
+holds. This file is rewritten every day at ~03:00 Israel time with the latest
+close, both balances, and a note on exactly what it did.
+
+To fill it in right now: run `python3 sp500_wallet.py`, or on GitHub open
+**Actions → “S&P 500 daily wallet” → Run workflow**.
 
 ---
 
