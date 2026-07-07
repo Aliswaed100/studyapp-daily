@@ -148,13 +148,25 @@ WALLET_BUY_ILS=100 WALLET_DROP_PCT=1 python3 sp500_wallet.py   # tweak the rule
 
 ### How it runs daily
 
-The daily **~03:00 Israel time** run is driven by a **Claude Routine**
-(a scheduled trigger in Claude Code on the web). Each night it opens a fresh
-session, runs `sp500_wallet.py`, and the script commits & pushes the update.
+Two pieces work together, because the market data can only be fetched from a
+network with open internet access:
 
-The GitHub Actions workflow
-**[`.github/workflows/sp500-wallet.yml`](.github/workflows/sp500-wallet.yml)**
-is kept as a **manual "update it now" button** (Actions ▸ *S&P 500 daily
-wallet* ▸ *Run workflow*). If you'd rather GitHub run the schedule instead of
-the Routine, delete the Routine and uncomment the `schedule:` block in that
-file (it must be on the `main` branch for GitHub to schedule it).
+1. **Engine — GitHub Actions** runs
+   **[`.github/workflows/sp500-wallet.yml`](.github/workflows/sp500-wallet.yml)**
+   on a schedule (`22:00 UTC`, after the US close). GitHub's runners have open
+   internet, so they can reach the price sources. The job runs `sp500_wallet.py`,
+   which commits & pushes the updated `wallet.json` + `WALLET.md`.
+2. **Notifier — a Claude Routine** runs a couple of hours later
+   (`00:00 UTC` ≈ **03:00 Israel time**), reads the freshly-updated `WALLET.md`,
+   and sends a phone notification with the day's numbers.
+
+**See it right now:** open **Actions ▸ *S&P 500 daily wallet* ▸ Run workflow**
+to fetch today's real numbers immediately instead of waiting for the schedule.
+
+> Why two pieces? Claude Code's cloud environment sits behind an egress policy
+> that blocks the finance data hosts, so the fetch itself has to happen on
+> GitHub's runners. The Routine only *reads* the result (reaching GitHub is
+> allowed) and notifies you.
+>
+> Scheduled workflows are auto-disabled after ~60 days with no repo activity;
+> the daily commits from this and the questions routine keep it alive.
