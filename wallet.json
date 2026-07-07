@@ -13,8 +13,20 @@
   "invested": 0.0,
   "totalValue": 5000.0,
   "profitLoss": 0.0,
-  "lastTradeDate": null,
-  "lastIndex": null,
-  "lastRunDate": null,
-  "history": []
+  "lastTradeDate": "2026-07-07",
+  "lastIndex": 7503.85009765625,
+  "lastRunDate": "2026-07-07",
+  "history": [
+    {
+      "date": "2026-07-07",
+      "index": 7503.85009765625,
+      "changePct": null,
+      "action": "baseline",
+      "boughtILS": 0.0,
+      "cash": 5000.0,
+      "sp500Value": 0.0,
+      "totalValue": 5000.0,
+      "source": "yahoo"
+    }
+  ]
 }
