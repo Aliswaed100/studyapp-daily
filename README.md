@@ -104,3 +104,57 @@ GitHub Actions is the most reliable — it doesn't need your Mac to be awake.
 - The deck `id` in `daily.json` is fixed, so every sync targets the same
   "Daily Questions" deck instead of creating duplicates. Questions are matched
   by their `id`, so re-syncing never double-adds.
+
+---
+
+# 📈 S&P 500 daily wallet (`sp500_wallet.py`)
+
+A second, independent daily routine that tracks a **simulated** 5,000 ₪ wallet
+against the S&P 500.
+
+> ⚠️ **Paper money only.** No real money is moved and no broker is contacted.
+> This is an educational tracker, **not financial advice.**
+
+The wallet keeps **two balances** in `wallet.json`:
+
+| Balance | Meaning | Starts at |
+|---|---|---|
+| 💵 **Cash** | ILS not yet invested | 5,000 ₪ |
+| 📊 **S&P 500 Value** | market value of the index holding | 0 ₪ |
+
+Every run it:
+
+1. Fetches the latest **S&P 500** close from the internet (Stooq, falling back
+   to Yahoo Finance — both free, no API key).
+2. **Re-prices** the *S&P 500 Value* balance at today's level (so it moves with
+   the market).
+3. Applies a simple **buy-the-dip** rule: when the index closes **lower** than
+   the day before, it moves `WALLET_BUY_ILS` (default **250 ₪**) from *Cash*
+   into *S&P 500 Value*. On flat/up days it holds; it stops buying once Cash
+   runs out. (`WALLET_DROP_PCT`, default `0`, lets you require a minimum daily
+   drop before buying — e.g. `1` = only buy on drops of ≥1%.)
+4. Rewrites two files and pushes them:
+   - **[`WALLET.md`](WALLET.md)** — the report you read: today's close, both
+     balances, profit/loss, and a note on exactly what it did today.
+   - `wallet.json` — the machine state (both balances, units, full daily history).
+
+### Run it by hand
+
+```bash
+python3 sp500_wallet.py                     # fetch, update, commit & push
+WALLET_NO_PUSH=1 python3 sp500_wallet.py    # dry run: update files, don't push
+WALLET_BUY_ILS=100 WALLET_DROP_PCT=1 python3 sp500_wallet.py   # tweak the rule
+```
+
+### How it runs daily
+
+The daily **~03:00 Israel time** run is driven by a **Claude Routine**
+(a scheduled trigger in Claude Code on the web). Each night it opens a fresh
+session, runs `sp500_wallet.py`, and the script commits & pushes the update.
+
+The GitHub Actions workflow
+**[`.github/workflows/sp500-wallet.yml`](.github/workflows/sp500-wallet.yml)**
+is kept as a **manual "update it now" button** (Actions ▸ *S&P 500 daily
+wallet* ▸ *Run workflow*). If you'd rather GitHub run the schedule instead of
+the Routine, delete the Routine and uncomment the `schedule:` block in that
+file (it must be on the `main` branch for GitHub to schedule it).
