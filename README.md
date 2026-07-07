@@ -104,3 +104,47 @@ GitHub Actions is the most reliable — it doesn't need your Mac to be awake.
 - The deck `id` in `daily.json` is fixed, so every sync targets the same
   "Daily Questions" deck instead of creating duplicates. Questions are matched
   by their `id`, so re-syncing never double-adds.
+
+---
+
+# 📈 S&P 500 daily wallet (`sp500_wallet.py`)
+
+A second, independent daily routine that tracks a **simulated** 5,000 ₪ wallet
+invested in the S&P 500.
+
+> ⚠️ **Paper money only.** No real money is moved and no broker is contacted.
+> This is an educational tracker, **not financial advice.**
+
+Every run it:
+
+1. Fetches the latest **S&P 500** close from the internet (Stooq, falling back
+   to Yahoo Finance — both free, no API key).
+2. Follows a simple **DCA** rule: invest `WALLET_DCA_ILS` (default **250 ₪**) of
+   the cash into the index each new trading day until the 5,000 ₪ is fully
+   deployed, then just hold and track.
+3. Rewrites two files and pushes them:
+   - **[`WALLET.md`](WALLET.md)** — the human report you read: today's close,
+     your wallet value, profit/loss, and a plain-language "how to manage it
+     today" note.
+   - `wallet.json` — the machine state (cash, units, full daily history).
+
+### Run it by hand
+
+```bash
+python3 sp500_wallet.py                 # fetch, update, commit & push
+WALLET_NO_PUSH=1 python3 sp500_wallet.py   # dry run: update files, don't push
+```
+
+### Schedule it — GitHub Actions
+
+The workflow **[`.github/workflows/sp500-wallet.yml`](.github/workflows/sp500-wallet.yml)**
+runs it daily at `00:00 UTC` (≈ **03:00 Israel time** in summer / 02:00 in
+winter — change the `cron` to shift it) and can also be run on demand from the
+**Actions** tab (**Run workflow**).
+
+> **To turn the daily schedule on, this branch must be merged into `main`** —
+> GitHub only runs `schedule`/`workflow_dispatch` workflows from the default
+> branch. Until then, run the script locally or trigger the workflow manually.
+
+Scheduled workflows are also auto-disabled after ~60 days with no repo
+activity; the daily commits from this and the questions routine keep it alive.

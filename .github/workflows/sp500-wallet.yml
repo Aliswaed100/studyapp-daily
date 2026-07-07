@@ -1,0 +1,27 @@
+name: S&P 500 daily wallet
+
+on:
+  schedule:
+    # 00:00 UTC ≈ 03:00 in Israel during summer (IDT, UTC+3);
+    # 02:00 in winter (IST, UTC+2). Change the "0 0" below to shift the time.
+    - cron: "0 0 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+# If a scheduled run and a manual run overlap, don't push over each other.
+concurrency:
+  group: sp500-wallet
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update the S&P 500 wallet
+        run: python3 sp500_wallet.py
+        env:
+          WALLET_DCA_ILS: "250"
