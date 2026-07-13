@@ -1,27 +1,27 @@
 # 📈 My S&P 500 Wallet
 
-_Last updated **2026-07-12** (runs daily ~03:00 Israel time)._
+_Last updated **2026-07-13** (runs daily ~03:00 Israel time)._
 
 ## Today's market
 
 | S&P 500 close | Trade date | Daily change | Source |
 |---|---|---|---|
-| **7,575.39** | 2026-07-10 | +0.00% | yahoo |
+| **7,515.34** | 2026-07-13 | -0.79% | yahoo |
 
 ## My two balances
 
 | Balance | Amount |
 |---|---|
-| 💵 **Cash** | **₪4,750.00** |
-| 📊 **S&P 500 Value** | **₪253.10** |
-| 💰 Total wallet | ₪5,003.10 |
-| 🟢 Profit / loss | ₪3.10 (+0.06%) |
+| 💵 **Cash** | **₪4,500.00** |
+| 📊 **S&P 500 Value** | **₪501.09** |
+| 💰 Total wallet | ₪5,001.09 |
+| 🟢 Profit / loss | ₪1.09 (+0.02%) |
 
-_(Starting capital: ₪5,000.00. Invested into the S&P 500 so far: ₪250.00.)_
+_(Starting capital: ₪5,000.00. Invested into the S&P 500 so far: ₪500.00.)_
 
 ## 📝 What the wallet did today
 
-> US market was closed today (weekend/holiday) — no new close. The S&P 500 balance is shown at its last price; nothing bought.
+> 📉 S&P 500 fell 0.79% today → moved **₪250 from Cash into the S&P 500** (buy-the-dip). Cash left: ₪4,500.
 
 ## ℹ️ The rule
 
