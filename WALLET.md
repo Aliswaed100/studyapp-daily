@@ -6,7 +6,7 @@ _Last updated **2026-10-17** (runs daily ~03:00 Israel time)._
 
 | S&P 500 close | Trade date | Daily change | Source |
 |---|---|---|---|
-| **7,659.44** | 2026-10-16 | -1.09% | yahoo |
+| **7,659.44** | 2026-10-16 | +0.00% | yahoo |
 
 ## My two balances
 
@@ -21,7 +21,7 @@ _(Starting capital: ₪5,000.00. Invested into the S&P 500 so far: ₪5,000.00.)
 
 ## 📝 What the wallet did today
 
-> All cash has been deployed into the S&P 500 — now just holding and tracking its value.
+> US market was closed today (weekend/holiday) — no new close. The S&P 500 balance is shown at its last price; nothing bought.
 
 ## ℹ️ The rule
 
