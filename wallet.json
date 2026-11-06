@@ -8,14 +8,14 @@
     "dropThresholdPct": 0.0
   },
   "cash": 0.0,
-  "sp500Value": 5063.9,
+  "sp500Value": 4843.33,
   "units": 0.6586227411287469,
   "invested": 5000.0,
-  "totalValue": 5063.9,
-  "profitLoss": 63.9,
-  "lastTradeDate": "2026-11-04",
-  "lastIndex": 7688.6201171875,
-  "lastRunDate": "2026-11-05",
+  "totalValue": 4843.33,
+  "profitLoss": -156.67,
+  "lastTradeDate": "2026-11-05",
+  "lastIndex": 7353.72998046875,
+  "lastRunDate": "2026-11-06",
   "history": [
     {
       "date": "2026-07-07",
@@ -983,6 +983,17 @@
       "cash": 0.0,
       "sp500Value": 5063.9,
       "totalValue": 5063.9,
+      "source": "yahoo"
+    },
+    {
+      "date": "2026-11-05",
+      "index": 7353.72998046875,
+      "changePct": -4.36,
+      "action": "hold-empty",
+      "boughtILS": 0.0,
+      "cash": 0.0,
+      "sp500Value": 4843.33,
+      "totalValue": 4843.33,
       "source": "yahoo"
     }
   ]
